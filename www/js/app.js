@@ -45,26 +45,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-dash': {
         templateUrl: 'vue/main/main.html',
-        controller: 'MainCrtl'
+        controller: 'MainCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.friends', {
+      url: '/friends',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-friends': {
+          templateUrl: 'templates/tab-friends.html',
+          controller: 'FriendsCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.friend-detail', {
+      url: '/friends/:friendId',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-friends': {
+          templateUrl: 'templates/friend-detail.html',
+          controller: 'FriendDetailCtrl'
         }
       }
     })
