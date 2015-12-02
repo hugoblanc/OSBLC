@@ -32,6 +32,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $stateProvider
 
   // setup an abstract state for the tabs directive
+  
     .state('tab', {
     url: '/tab',
     abstract: true,
@@ -46,6 +47,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       'tab-dash': {
         templateUrl: 'vue/main/main.html',
         controller: 'MainCtrl'
+      }
+    }
+  })
+
+  .state('login', {
+    url: '/login',
+    views: {
+      'login': {
+        templateUrl: 'vue/login/login.html'//,
+        //controller: 'LoginCtrl'
       }
     }
   })
