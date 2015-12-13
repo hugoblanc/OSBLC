@@ -33,10 +33,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // setup an abstract state for the tabs directive
   
+    .state('signin', {
+          url: '/sign-in',
+          templateUrl: 'vue/login/login.html',
+          controller: 'LoginCtrl'
+   })
+
     .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'pages/tabs.html'
+    templateUrl: 'vue/tabs/tabs.html'
   })
 
   // Each tab has its own nav history stack:
@@ -51,15 +57,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('login', {
-    url: '/login',
-    views: {
-      'login': {
-        templateUrl: 'vue/login/login.html'//,
-        //controller: 'LoginCtrl'
-      }
-    }
-  })
 
   .state('tab.friends', {
       url: '/friends',
@@ -91,6 +88,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/sign-in');
 
 });

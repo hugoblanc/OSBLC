@@ -23,7 +23,6 @@ angular.module('starter.controllers', [])
 .controller('MainCtrl', function($scope, $stateParams, Friends) {
   //$scope.chat = Chats.get($stateParams.chatId);
 })
-
 .controller('AccountCtrl', function($scope) {
 
 });
