@@ -1,0 +1,26 @@
+
+<!-- <title>Connexion</title> -->
+<<ion-view view-title="login">
+  <ion-pane>
+    <ion-content>
+      <div class="list">
+        <!-- <img src="img/ZOXO.png" class="imageTitle"> -->
+        <form ng-submit="login(user)">
+          <label class="item item-input item-stacked-label firstCase">
+            <input type ="text" placeholder="Pseudo" ng-model="user.pseudo">
+            <span class ="infoList"  ng-show="lblPseudo"> Veuillez entrer un pseudo valide !</span> 
+          </label>
+          <label class="item item-input input-block item-stacked-label firstCase">
+            <input type ="password" placeholder="Password" ng-model="user.mdp">
+            <span class ="infoList"  ng-show="lblMdp"> Veuillez entrer un mot de passe valide !</span>
+          </label>
+          <label class="item item-button firstCase">
+            <button class="button button-block button-positive" type="submit">
+          Sign-In
+        </button>
+          </label>
+        </form>
+      </div>
+    </ion-content>
+  </ion-pane>
+</ion-view>

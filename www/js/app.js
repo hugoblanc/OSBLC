@@ -5,7 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers'])
+
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,7 +24,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function(BackandProvider, $stateProvider, $urlRouterProvider) {
+
+
+  BackandProvider.setAppName("MABASE"); // change here to your app name
+  BackandProvider.setSignUpToken('4ce88904-75c5-412c-8365-df97d9e18a8f'); //token that enable sign up. see http://docs.backand.com/en/latest/apidocs/security/index.html#sign-up
+  BackandProvider.setAnonymousToken('87c37623-a2d2-42af-93df-addc65c6e9ad'); // token is for anonymous login. see http://docs.backand.com/en/latest/apidocs/security/index.html#anonymous-access
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -35,14 +41,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   
     .state('signin', {
           url: '/sign-in',
-          templateUrl: 'vue/login/login.html',
+          templateUrl: 'pages/login/login.html',
           controller: 'LoginCtrl'
    })
 
     .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'vue/tabs/tabs.html'
+    templateUrl: 'pages/tabs/tabs.html'
   })
 
   // Each tab has its own nav history stack:
@@ -51,7 +57,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/dash',
     views: {
       'tab-dash': {
-        templateUrl: 'vue/main/main.html',
+        templateUrl: 'pages/main/main.html',
         controller: 'MainCtrl'
       }
     }
@@ -90,4 +96,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/sign-in');
 
+  //$httpProvider.interceptors.push('APIInterceptor');
 });
