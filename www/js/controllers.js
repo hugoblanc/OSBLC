@@ -36,6 +36,17 @@ angular.module('starter.controllers', ["ui.router"])
 
 .controller('BoissonCtrl', function($scope, $stateParams, BoissonService) {
 	$scope.boisson ={};
+	var userStocked =  JSON.parse(window.localStorage.getItem("currentUser"));
+	
+		function boissonsChecked(boissons){
+			var result = [];
+			for(var i = 0; i < boissons.length; i++){
+        		if(boissons[i].isChecked){
+        			result.push(boissons[i]);
+        		}
+        	}
+        	return result;
+		}
 
         function getAll() {
             BoissonService.all()
@@ -47,13 +58,13 @@ angular.module('starter.controllers', ["ui.router"])
             }
 
         function submit(boissons){
-        	var boiss = boissons;
-        	BoissonService.create().then(function(result){
+        	var boissonsSelected = boissonsChecked(boissons.boissons);
+        	BoissonService.create(boissonsSelected).then(function(result){
         		console.log("correcte ! ");
         	});
         }
 
-        $scope.boisson.submit = submit();
+        $scope.boisson.submit = submit;
         $scope.boisson.getAll = getAll();
 
 })

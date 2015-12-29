@@ -1,15 +1,11 @@
 app.controller('LoginCtrl',function (Backand, $scope, $state, Connexion){  
   $scope.lblPseudo = false;
   $scope.lblMdp = false;
+  /*var userStocked =  JSON.parse(window.localStorage.getItem("currentUser"));
+  user.mdp = userStocked.mdp;
+  user.pseudo = userStocked.pseudo;*/
 
-  function signin() {
-      LoginService.signin(login.email, login.password)
-          .then(function () {
-              onLogin();
-          }, function (error) {
-              console.log(error)
-          })
-  }
+
 
   function login(user, $scope){
     if((''+user.pseudo).length < 4 || (''+user.mdp).length < 4){
@@ -23,7 +19,19 @@ app.controller('LoginCtrl',function (Backand, $scope, $state, Connexion){
       console.log('Login', user.mdp);
       console.log('Login', user.pseudo);
       Connexion.signin(user.pseudo, user.mdp).then(function(result){
-      $state.go('tab.dash');
+        $state.go('tab.dash');
+        var stock = [];
+                  Connexion.all().then(function (argument) {
+                      stock = argument.data.data;
+                      for(var i=0; i< stock.length; i++){
+                        if(stock[i].email == user.pseudo){
+                          window.localStorage.setItem("userId", JSON.stringify(stock[i].id));
+                        }
+                      }
+            })
+
+      window.localStorage.setItem("user", JSON.stringify(user));
+      window.localStorage.setItem("token", JSON.stringify(result));
       });
     }
   }
