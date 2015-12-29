@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers'])
+var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 'ui.router'])
 
 
 .run(function($ionicPlatform) {
@@ -64,15 +64,46 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers'])
   })
 
 
-  .state('tab.friends', {
-      url: '/friends',
+  .state('tab.menu', {
+      url: '/menu',
       views: {
-        'tab-friends': {
-          templateUrl: 'templates/tab-friends.html',
-          controller: 'FriendsCtrl'
+        'tab-menu': {
+          templateUrl: 'pages/menu/menu.html',
+          controller: 'MenuCtrl'
         }
       }
     })
+
+    .state('tab.commande', {
+      url: '/commande',
+      views: {
+        'tab-menu': {
+          templateUrl: 'pages/commande/commande.html',
+          controller: 'CommandeCtrl'
+        }
+      }
+    })
+
+    .state('tab.boissons', {
+      url: '/boissons',
+      views: {
+        'tab-menu': {
+          templateUrl: 'pages/boissons/boissons.html',
+          controller: 'BoissonCtrl'
+        }
+      }
+    })
+
+    .state('tab.favoris', {
+      url: '/favoris',
+      views: {
+        'tab-friends': {
+          templateUrl: 'pages/favoris/favoris.html',
+          controller: 'MenuCtrl'
+        }
+      }
+    })
+
     .state('tab.friend-detail', {
       url: '/friends/:friendId',
       views: {

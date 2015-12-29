@@ -2,3 +2,30 @@
 .infoList{
 	color: rgb(200, 110, 110);
 }
+
+
+
+
+/****************
+****commande****
+****************/
+
+.choix-commande{
+	margin-top: 100px;
+}
+
+
+
+.choix-boissons{
+	margin-top: 100px;
+}
+.vvalide-boissons{
+	position: absolute;
+	bottom: 0px !important;
+}
+
+
+.item-details-note{
+	margin-right: 10px;
+	font-size: 15px;
+}
