@@ -8,7 +8,7 @@
 var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 'ui.router'])
 
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -22,6 +22,16 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
       StatusBar.styleDefault();
     }
   });
+
+  $rootScope.age = 5;
+  $rootScope.user = {};
+  $rootScope.user.id = '';
+  $rootScope.user.email = '';
+  $rootScope.user.firstName = '';
+  $rootScope.user.lastname = '';
+  $rootScope.user.commandes = [];
+  $rootScope.user.currentCommande = -1;
+
 })
 
 .config(function(BackandProvider, $stateProvider, $urlRouterProvider) {

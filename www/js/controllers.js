@@ -18,11 +18,68 @@ angular.module('starter.controllers', ["ui.router"])
 	}
 })
 
-.controller('CommandeCtrl', function($scope, $state) {
-	var test = 25;
-	function changeView(){
-		$state.go('tab.account');
+.controller('CommandeCtrl', function($scope, $state, $rootScope, CommandeService) {
+	$scope.commande = {};
+
+	//Crer en rootScope un objet qui correspond à la commande actuelle
+	function createCommande(userId){
+		/*******Schema NoSQL*********
+		var newCommande = {
+			"user": userId,
+			"date": (new Date()),
+			"statut": "Non validé"
+		};
+
+		*/
+
+		$rootScope.user.commandes.push( {"plats":[],
+										"boissons": [],
+										"desserts": [],
+										"statut": "Non validé",
+										"date": (new Date())});
+		$rootScope.user.currentCommande = $rootScope.user.currentCommande +1;
 	}
+
+	//Préparer la commande anvant l'envoi en base (check quoi envoyer)
+	function preparCommande(){
+		var currentCommande = $rootScope.user.commandes[$rootScope.user.currentCommande];
+		if(currentCommande.boissons.length > 0 
+			|| currentCommande.plats.length > 0 
+			|| currentCommande.desserts){
+			
+		}
+
+			var newCommande = {
+			"user": $rootScope.user.id,
+			"date": currentCommande.date,
+			"statut": "Envoyé"
+		};
+
+		return newCommande;
+
+	}
+
+	function preparBoissons(boissons){
+		var newCommande = {
+			"user": userId,
+			"date": (new Date()),
+			"statut": "Non validé"
+		};
+
+
+	}
+
+	function submit(){
+
+
+	    CommandeService.create(preparCommande()).then(function(result){
+    	console.log("correcte ! ");
+    	$rootScope.user.currentCommande = result.data.__metadata.id
+    	});
+	}
+
+	$scope.commande.creerCommande = createCommande($rootScope.user.id);
+	$scope.commande.submit = submit;
 })
 
 
@@ -34,7 +91,7 @@ angular.module('starter.controllers', ["ui.router"])
 
 })
 
-.controller('BoissonCtrl', function($scope, $stateParams, BoissonService) {
+.controller('BoissonCtrl', function($scope, $stateParams, $state, BoissonService, CommandeBoissonService, $rootScope) {
 	$scope.boisson ={};
 	var userStocked =  JSON.parse(window.localStorage.getItem("currentUser"));
 	
@@ -59,9 +116,13 @@ angular.module('starter.controllers', ["ui.router"])
 
         function submit(boissons){
         	var boissonsSelected = boissonsChecked(boissons.boissons);
-        	BoissonService.create(boissonsSelected).then(function(result){
-        		console.log("correcte ! ");
-        	});
+
+
+        	$rootScope.user.commandes[$rootScope.user.currentCommande].boissons = boissonsSelected;
+
+        	// CommandeBoissonService.create(boissonsSelected).then(function(result){
+        	// 	console.log("correcte ! ");
+        	// });
         }
 
         $scope.boisson.submit = submit;

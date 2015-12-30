@@ -1,4 +1,4 @@
-app.controller('LoginCtrl',function (Backand, $scope, $state, Connexion){  
+app.controller('LoginCtrl',function (Backand, $scope, $state, Connexion, $rootScope){  
   $scope.lblPseudo = false;
   $scope.lblMdp = false;
   /*var userStocked =  JSON.parse(window.localStorage.getItem("currentUser"));
@@ -26,6 +26,7 @@ app.controller('LoginCtrl',function (Backand, $scope, $state, Connexion){
                       for(var i=0; i< stock.length; i++){
                         if(stock[i].email == user.pseudo){
                           window.localStorage.setItem("userId", JSON.stringify(stock[i].id));
+                          $rootScope.user.id = stock[i].id;
                         }
                       }
             })
