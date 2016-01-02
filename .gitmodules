@@ -1,0 +1,3 @@
+[submodule "www/commun"]
+	path = www/commun
+	url = https://github.com/hugoblanc/commun/

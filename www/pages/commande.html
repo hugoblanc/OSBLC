@@ -1,26 +1,10 @@
 <ion-view view-title="Nouvelle commande">  
     <div class="choix-commande">
-    	<button class="button button-full button-light" ui-sref="tab.plats" >Plats</button>
-    	<button class="button button-full button-light item" ui-sref="tab.boissons">Boisson</button>
-        <button class="button button-full button-light item" ui-sref="tab.favo">Dessert</button>
+    	<button class="button button-full item" ui-sref="tab.plats" >Plats</button>
+    	<button class="button button-full item" ui-sref="tab.boissons">Boisson</button>
+        <button class="button button-full item" ng-class="{'test': (classe().isSelected)}"   ui-sref="tab.favo">Dessert</button>
     </div>
     <button class="item button button-full button-balanced valide-commande" ng-click="commande.submit()">
         Valider ! 
     </button>
 </ion-view>
-<!-- <form name="myForm" ng-submit="foo()" novalidate>
-    <label>
-     </label>
-    <input name="prenom" type="text" required ng-minlength="2" ng-maxlength="20" />
-    
-    <label> : </label>
-    <input name="nom" type="text" ng-maxlength="30" />
-    
-    <label> : </label>
-    <input name="mail" type="email" required />
-    
-    <label>Âge : </label>
-    <input name="age" type="number" required />
-    
-    <input type="submit" value="Envoyer" />
-</form> -->

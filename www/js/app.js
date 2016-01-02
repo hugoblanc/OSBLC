@@ -32,6 +32,7 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
   $rootScope.user.commandes = [];
   $rootScope.user.currentCommande = -1;
 
+
 })
 
 .config(function(BackandProvider, $stateProvider, $urlRouterProvider) {
