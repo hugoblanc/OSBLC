@@ -51,14 +51,14 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
   
     .state('signin', {
           url: '/sign-in',
-          templateUrl: 'pages/login/login.html',
+          templateUrl: 'pages/login.html',
           controller: 'LoginCtrl'
    })
 
     .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'pages/tabs/tabs.html'
+    templateUrl: 'pages/tabs.html'
   })
 
   // Each tab has its own nav history stack:
@@ -67,7 +67,7 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
     url: '/dash',
     views: {
       'tab-dash': {
-        templateUrl: 'pages/main/main.html',
+        templateUrl: 'pages/main.html',
         controller: 'MainCtrl'
       }
     }
@@ -78,7 +78,7 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
       url: '/menu',
       views: {
         'tab-menu': {
-          templateUrl: 'pages/menu/menu.html',
+          templateUrl: 'pages/menu.html',
           controller: 'MenuCtrl'
         }
       }
@@ -88,7 +88,7 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
       url: '/commande',
       views: {
         'tab-menu': {
-          templateUrl: 'pages/commande/commande.html',
+          templateUrl: 'pages/commande.html',
           controller: 'CommandeCtrl'
         }
       }
@@ -98,7 +98,7 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
       url: '/boissons',
       views: {
         'tab-menu': {
-          templateUrl: 'pages/boissons/boissons.html',
+          templateUrl: 'pages/boissons.html',
           controller: 'BoissonCtrl'
         }
       }
@@ -108,7 +108,7 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
       url: '/favoris',
       views: {
         'tab-friends': {
-          templateUrl: 'pages/favoris/favoris.html',
+          templateUrl: 'pages/favoris.html',
           controller: 'MenuCtrl'
         }
       }
