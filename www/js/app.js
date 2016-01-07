@@ -31,6 +31,7 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
   $rootScope.user.lastname = '';
   $rootScope.user.commandes = [];
   $rootScope.user.currentCommande = -1;
+  $rootScope.user.IDcurrentCommande = 0;
 
 
 })

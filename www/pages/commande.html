@@ -1,8 +1,14 @@
-<ion-view view-title="Nouvelle commande">  
+<ion-view view-title="Nouvelle commande" cache-view="false">  
     <div class="choix-commande">
     	<button class="button button-full item" ui-sref="tab.plats" >Plats</button>
-    	<button class="button button-full item" ui-sref="tab.boissons">Boisson</button>
-        <button class="button button-full item" ng-class="{'test': (classe().isSelected)}"   ui-sref="tab.favo">Dessert</button>
+    	<button class="button button-full item" ng-class="{'commande-boisson-selected': (classe().isSelected)}" ui-sref="tab.boissons">
+    		Boissons
+    		<div class="commande-boissons-detils" ng-if="(classe().isSelected)">
+    			<i class="ion-wineglass commande-icon-indication" ng-if="(classe().isSelected)"></i>
+    			<div class="commande-nb-boissons"> {{user.nbBoisson}} </div>
+    		</div>   
+    	</button>
+        <button class="button button-full item" ui-sref="tab.favo">Desserts</button>
     </div>
     <button class="item button button-full button-balanced valide-commande" ng-click="commande.submit()">
         Valider ! 

@@ -10,18 +10,32 @@
 ****commande****
 ****************/
 
-.choix-commande{
-	margin-top: 100px;
-}
 
 
 
 .choix-boissons{
 	margin-top: 100px;
 }
+
+/*
 .vvalide-boissons{
 	position: absolute;
 	bottom: 0px !important;
+}
+
+/**********************
+********COMMANDE*******
+***********************/
+
+.choix-commande{
+	margin-top: 100px;
+}
+
+.commande-boissons-detils{
+	position: absolute;
+	right: 20px;
+	font-size: 30px;
+	display: inline-flex;
 }
 
 
@@ -29,11 +43,14 @@
 	margin-right: 10px;
 	font-size: 15px;
 }
-
-.test{
-	padding: 10px;
+.commande-nb-boissons{
+	margin-left: 10px;
 }
 
-.noTest{
-	padding: 10px;
+.commande-boisson-selected{
+	
+}
+
+.commande-icon-indication{
+
 }
