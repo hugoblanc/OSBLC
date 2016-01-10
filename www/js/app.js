@@ -65,10 +65,10 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
+  .state('tab.accueil', {
     url: '/dash',
     views: {
-      'tab-dash': {
+      'tab-accueil': {
         templateUrl: 'pages/main.html',
         controller: 'MainCtrl'
       }
@@ -121,7 +121,6 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
       views: {
         'tab-friends': {
           templateUrl: 'templates/friend-detail.html',
-          controller: 'FriendDetailCtrl'
         }
       }
     })
