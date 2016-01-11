@@ -17,10 +17,9 @@
 	margin-top: 100px;
 }
 
-/*
-.vvalide-boissons{
-	position: absolute;
-	bottom: 0px !important;
+
+.valide-boissons{
+	
 }
 
 /**********************
@@ -47,10 +46,14 @@
 	margin-left: 10px;
 }
 
-.commande-boisson-selected{
-	
+.commande-block-confirmation{
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 }
 
-.commande-icon-indication{
-
+.commande-bouton-confirme{
+	width: 48%;
 }
+
