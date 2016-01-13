@@ -1,27 +1,52 @@
-<ion-view view-title="Plats" class="plats-choix-type">  
-    <ion-list>
-        <div>
-          <ion-radio ng-model="plats.isSandwich" ng-value="true">Sandwich Maison</ion-radio>
-          <ion-radio ng-model="plats.isSandwich" ng-value="false">Plats Cuisiné</ion-radio>
+<ion-view view-title="Plats" class="plats-choix-type">
+  <ion-content scroll="true">
+    
+      <div>
+        <div class="item item-divider">
+          Selectionner votre plat
         </div>
+        <ion-radio ng-model="plats.isSandwich" ng-value="true">Hot Dog</ion-radio>
+        <ion-radio ng-model="plats.isSandwich" ng-value="false">Plats Cuisiné</ion-radio>
+      </div>
+    </br>
 
-        <ion-checkbox ng-model="sauce.isChecked" ng-checked="sauce.isChecked" ng-repeat="sauce in choix.sauces" ng-if="plats.isSandwich">
-            <div class="details-sauces">
-                {{sauce.name}}
-                <span class="item-note item-details-note" ng-if="sauce.prix!=0.5">
-                  {{sauce.prix}}€
-                </span>
-            </div>
-          </ion-checkbox>
+      <ion-list>
+      <div ng-if="plats.isSandwich">
+        <div class="item item-divider">
+          Selectionner votre sauce
+        </div>
+        
+        <ion-checkbox ng-model="sauce.isChecked" ng-checked="sauce.isChecked" ng-repeat="sauce in choix.sauces" >
+          <div class="details-sauces">
+              {{sauce.name}}
+          </div>
+        </ion-checkbox>
+        
+      </div>
+</ion-list>
+<ion-list>
+      <div ng-if="!plats.isSandwich">
+        <div class="item item-divider">
+          Selectionner votre plat préparer
+        </div>
+        <ion-checkbox ng-model="platsPrepare.isChecked" ng-checked="platsPrepare.isChecked" ng-repeat="platsPrepare in choix.platsPrepares">
+          <div class="details-platsPrepares">
+              {{platsPrepare.name}}
+              <span class="item-note item-details-note" ng-if="platsPrepare.prix!=0.5">
+                {{platsPrepare.prix}}€
+              </span>
+          </div>
+        </ion-checkbox>
+      </div>
+      </ion-list>
+    
+        <button ng-click="plats.submit(choix.sauces, 'sauces')" class="item button button-full button-balanced plats-submit" ng-if="plats.isSandwich">
+      Valider mon Hot Dog
+    </button>
 
-      <ion-checkbox ng-model="platsPrepare.isChecked" ng-checked="platsPrepare.isChecked" ng-repeat="platsPrepare in choix.platsPrepares" ng-if="!plats.isSandwich">
-            <div class="details-platsPrepares">
-                {{platsPrepare.name}}
-                <span class="item-note item-details-note" ng-if="platsPrepare.prix!=0.5">
-                  {{platsPrepare.prix}}€
-                </span>
-            </div>
-          </ion-checkbox>
+    <button ng-click="plats.submit(choix.platsPrepares, 'platsPrep')" class="item button button-full button-balanced plats-submit" ng-if="!plats.isSandwich">
+      Valider mon plat préparé
+    </button>
+  </ion-content>
 
-    </ion-list>
 </ion-view>
