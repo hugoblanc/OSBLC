@@ -7,17 +7,26 @@ app.controller('CommandeCtrl', function ($scope, $q, $state, $rootScope, Command
 
 
 	//
-	function classes(){
-		if($rootScope.user.commandes != null &&
-		 $rootScope.user.currentCommande >=0 &&
-		  $rootScope.user.commandes[$rootScope.user.currentCommande].boissons != undefined &&
-		   $rootScope.user.commandes[$rootScope.user.currentCommande].boissons.length > 0){
+	function classes() {
+	    //if ($rootScope.user.commandes != null && $rootScope.user.currentCommande >= 0) {
+	    if ($rootScope.user.commandes[$rootScope.user.currentCommande].boissons != undefined &&
+            $rootScope.user.commandes[$rootScope.user.currentCommande].boissons.length > 0) {
 
-			$scope.user.nbBoisson = $rootScope.user.commandes[$rootScope.user.currentCommande].boissons.length;
-			return{'isSelected' :true};
-		} else {
-			return {'isSelected': false};
-		}
+	        $scope.user.nbBoisson = $rootScope.user.commandes[$rootScope.user.currentCommande].boissons.length;
+	        return { 'boissonSelected': true };
+
+	    }
+	    if ($rootScope.user.commandes[$rootScope.user.currentCommande].desserts != undefined &&
+            $rootScope.user.commandes[$rootScope.user.currentCommande].desserts.length > 0) {
+
+	        $scope.user.nbDesserts = $rootScope.user.commandes[$rootScope.user.currentCommande].desserts.length;
+	        return { 'dessertSelected': true };
+
+	    } 
+	    //}
+	    // else {
+	    //	return {'isSelected': false};
+	    //}
 	};
 
 
@@ -61,7 +70,7 @@ app.controller('CommandeCtrl', function ($scope, $q, $state, $rootScope, Command
 
 		if(currentCommande.boissons.length > 0 
 			|| currentCommande.plats.length > 0 
-			|| currentCommande.desserts){
+			|| currentCommande.desserts.length > 0){
 			if(currentCommande.boissons.length > 0){
 				resultControl.boissons = true;
 			}
@@ -103,6 +112,13 @@ app.controller('CommandeCtrl', function ($scope, $q, $state, $rootScope, Command
 
 	}
 
+	function envoiDesserts(desserts, commandeId) {
+
+	    for (var i = 0; i < desserts.length; i++) {
+	        desserts[i].commande = commandeId;
+	    }
+	}
+
 	function envoiCommande(currentCommande){
 		/*Méthode qui envoi les commande à la partie service
 		fonctionne avec une fonction controleCOmmande qui fabrique un tableau de boolean
@@ -130,7 +146,7 @@ app.controller('CommandeCtrl', function ($scope, $q, $state, $rootScope, Command
 				});*/
 			}
 			if(controlMethode.desserts == true){
-				//Creer envoiDesserts
+			    envoiDesserts(currentCommande.desserts, $rootScope.user.IDcurrentCommande);
 			}
 			if(controlMethode.plats == true){
 				//creer envoiPlats
