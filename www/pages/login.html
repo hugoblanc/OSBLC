@@ -1,10 +1,10 @@
 
 <!-- <title>Connexion</title> -->
-<<ion-view view-title="login">
+<<ion-view>
   <ion-pane>
     <ion-content>
       <div class="list">
-        <!-- <img src="img/ZOXO.png" class="imageTitle"> -->
+        <img src="img/login.png" class="imageTitle">
         <form ng-submit="login(user)">
           <label class="item item-input item-stacked-label firstCase">
             <input type ="text" placeholder="Pseudo" ng-model="user.pseudo">
@@ -15,8 +15,8 @@
             <span class ="infoList"  ng-show="lblMdp"> Veuillez entrer un mot de passe valide !</span>
           </label>
           <label class="item item-button firstCase">
-            <button class="button button-block button-positive" type="submit">
-          Sign-In
+            <button class="button button-full button-balanced" type="submit">
+          Connexion
         </button>
           </label>
         </form>
