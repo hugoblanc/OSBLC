@@ -1,5 +1,5 @@
   
-app.controller('CommandeCtrl', function ($scope, $q, $state, $rootScope, CommandeService, CommandeBoissonService) {
+app.controller('CommandeCtrl', function ($scope, $q, $state, $rootScope, CommandeService, CommandeBoissonService,PlatsService, SauceCommandeService) {
 	$scope.commande = {};
 	$scope.user.nbBoisson = 0;
 	$scope.user.nbPlats = 0;
@@ -18,6 +18,15 @@ app.controller('CommandeCtrl', function ($scope, $q, $state, $rootScope, Command
 		} else {
 			return {'isSelected': false};
 		}
+
+
+	    if ($rootScope.user.commandes[$rootScope.user.currentCommande].desserts != undefined &&
+            $rootScope.user.commandes[$rootScope.user.currentCommande].desserts.length > 0) {
+
+	        $scope.user.nbDesserts = $rootScope.user.commandes[$rootScope.user.currentCommande].desserts.length;
+	        return { 'dessertSelected': true };
+
+	    } 
 	};
 
 
@@ -61,7 +70,7 @@ app.controller('CommandeCtrl', function ($scope, $q, $state, $rootScope, Command
 
 		if(currentCommande.boissons.length > 0 
 			|| currentCommande.plats.length > 0 
-			|| currentCommande.desserts){
+			|| currentCommande.desserts.length > 0){
 			if(currentCommande.boissons.length > 0){
 				resultControl.boissons = true;
 			}
@@ -95,13 +104,81 @@ app.controller('CommandeCtrl', function ($scope, $q, $state, $rootScope, Command
 
 
 			//Block ci dessous à décommenter pour envoyer les boissons pour de vrai, fanant de supprimer les objet un par un dans la base
-			/*CommandeBoissonService.create(boissons[i]).then(function(resultatBoissons){
+			CommandeBoissonService.create(boissons[i]).then(function(resultatBoissons){
 				console.log("n°"+(i+1));
 				//dfd.resolve(resultatBoissons);
-			});*/
+			});
 		}
 
 	}
+
+	function envoiPlats(plats, commandeId){
+		/* Model du format du plat
+
+		{
+			"name": "string",
+			"prix": "number",
+			"commande": "parent"
+		}   */
+
+		var plat = {
+			"name": "string",
+			"prix": "number",
+			"commande": commandeId
+		};
+
+
+
+		for(var i=0; i<plats.length ; i++){
+			plats[i].commande = commandeId;
+			plats[i].localId = i;
+			PlatsService.create(plats[i]).then(function(resultatPlat){
+
+				var idCurrentPlat = resultatPlat.data.__metadata.id;
+				var idLocalCurrentPlat = resultatPlat.config.data.localId;
+
+				//resultatPlat.config.data.type
+
+				if(resultatPlat.config.data.type == "sandwich"){
+					envoiIngredients(plats[idLocalCurrentPlat],
+					 commandeId,
+					  idCurrentPlat);
+				}
+				//envoiIngredients()
+				console.log("That's a test bro");
+			});
+		}
+
+	}
+
+	function envoiIngredients(sandwich, commandeId, platId){
+		/* Model de donné pour sauce
+		{
+			"name": "string",
+			"plat": "parent"
+		}*/
+
+			var sauces = sandwich.sauce;
+
+
+			if(sandwich.type != undefined && sandwich.type == "sandwich"){
+				for(var j =0; j < sauces.length ; j++){
+					sauces[j].plat = platId;
+					SauceCommandeService.create(sauces[j]).then(function(resultIngredients){
+						console.log("We're in bro ! ");
+					})
+				}
+			} 
+	}
+
+
+	function envoiDesserts(desserts, commandeId) {
+
+	    for (var i = 0; i < desserts.length; i++) {
+	        desserts[i].commande = commandeId;
+	    }
+	}
+
 
 	function envoiCommande(currentCommande){
 		/*Méthode qui envoi les commande à la partie service
@@ -110,10 +187,8 @@ app.controller('CommandeCtrl', function ($scope, $q, $state, $rootScope, Command
 		-boissons
 		-plats
 		-dessert
-
-
-
 		*/
+
 
 		CommandeService.create(currentCommande).then(function(resultCommande){/*Si l'envoi dans la base c'est bien passé 
 			alors on envoi le reste (boissons, desserts, plats)*/
@@ -130,10 +205,10 @@ app.controller('CommandeCtrl', function ($scope, $q, $state, $rootScope, Command
 				});*/
 			}
 			if(controlMethode.desserts == true){
-				//Creer envoiDesserts
+				envoiDesserts(currentCommande.desserts, $rootScope.user.IDcurrentCommande);
 			}
 			if(controlMethode.plats == true){
-				//creer envoiPlats
+				envoiPlats(currentCommande.plats, $rootScope.user.IDcurrentCommande);
 			}
 		});
 	}
@@ -147,7 +222,14 @@ app.controller('CommandeCtrl', function ($scope, $q, $state, $rootScope, Command
 
 		var currentCommande = $rootScope.user.commandes[$rootScope.user.currentCommande];
 	    envoiCommande(currentCommande);
-	    $state.go('tab.menu', {}, {reload: true});
+	    $state.go('tab.menu');
+	}
+
+	function annuler(){
+
+		$rootScope.user.commandes.pop();
+
+	    $state.go('tab.menu');
 	}
 
 	$scope.commande.creerCommande = createCommande($rootScope.user.id); //tranféré dans la page précédente (menu) car plus logique de créer la commande au moment de l'appuie sur "nouvelle commande"

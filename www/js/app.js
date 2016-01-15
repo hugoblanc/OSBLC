@@ -86,6 +86,16 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
       }
     })
 
+    .state('tab.desserts', {
+        url: '/desserts',
+        views: {
+            'tab-menu': {
+                templateUrl: 'pages/desserts.html',
+                controller: 'DessertCtrl'
+            }
+        }
+    })
+
     .state('tab.commande', {
       url: '/commande',
       views: {

@@ -1,46 +1,117 @@
-  app.service('Friends', function() {
 
-  var friends = [{
-    id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
-  }, {
-    id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }];
+app.service('PlatsService', function ($http, Backand, $q) {
+    var service = this,
+        baseUrl = '/1/objects/',
+        objectName = 'plats/';
 
-  return {
-    all: function() {
-      return friends;
-    },
-    remove: function(friend) {
-      friends.splice(friends.indexOf(friend), 1);
-    },
-    get: function(friendId) {
-      for (var i = 0; i < friends.length; i++) {
-        if (friends[i].id === parseInt(friendId)) {
-          return friends[i];
-        }
-      }
-      return null;
+    function getUrl() {
+        return Backand.getApiUrl() + baseUrl + objectName;
     }
-  };
+
+    service.all = function () {
+        return $http.get(getUrl());
+    };
+
+    service.create = function (object) {
+        var deferred = $q.defer();
+        $http.post(getUrl(), object).then(function successCallback(resultat){
+            deferred.resolve(resultat);
+        }, function errorCallback(response) {
+            deferred.reject(response);
+        });
+        return deferred.promise;
+    };
+});
+
+app.service('SaucesService', function ($http, Backand) {
+    var service = this,
+        baseUrl = '/1/objects/',
+        objectName = 'listesauces/';
+
+    function getUrl() {
+        return Backand.getApiUrl() + baseUrl + objectName;
+    }
+
+    service.all = function () {
+        return $http.get(getUrl());
+    };
+});
+
+app.service('PlatPrepService', function ($http, Backand) {
+    var service = this,
+        baseUrl = '/1/objects/',
+        objectName = 'listeplatsp/';
+
+    function getUrl() {
+        return Backand.getApiUrl() + baseUrl + objectName;
+    }
+
+    service.all = function () {
+        return $http.get(getUrl());
+    };
+});
+
+
+app.service('PlatPrepCommandeService', function ($http, Backand) {
+    var service = this,
+        baseUrl = '/1/objects/',
+        objectName = 'platprepares/';
+
+    function getUrl() {
+        return Backand.getApiUrl() + baseUrl + objectName;
+    }
+
+    service.all = function () {
+        return $http.get(getUrl());
+    };
+});
+
+app.service('SauceCommandeService', function ($http, Backand, $q) {
+    var service = this,
+        baseUrl = '/1/objects/',
+        objectName = 'sauces/';
+
+    function getUrl() {
+        return Backand.getApiUrl() + baseUrl + objectName;
+    }
+
+    service.all = function () {
+        return $http.get(getUrl());
+    };
+
+    service.create = function (object) {
+        var deferred = $q.defer();
+        $http.post(getUrl(), object).then(function successCallback(resultat){
+            deferred.resolve(resultat);
+        }, function errorCallback(response) {
+            deferred.reject(response);
+        });
+        return deferred.promise;
+    };
+
+});
+
+app.service('PlatPrepService', function ($http, Backand, $q) {
+    var service = this,
+        baseUrl = '/1/objects/',
+        objectName = 'listePlatsPrepare/';
+
+    function getUrl() {
+        return Backand.getApiUrl() + baseUrl + objectName;
+    }
+
+    service.all = function () {
+        return $http.get(getUrl());
+    };
+
+    service.create = function (object) {
+        var deferred = $q.defer();
+        $http.post(getUrl(), object).then(function successCallback(resultat){
+            deferred.resolve(resultat);
+        }, function errorCallback(response) {
+            deferred.reject(response);
+        });
+        return deferred.promise;
+    };
+
 });
