@@ -1,6 +1,7 @@
 <ion-view view-title="Nouvelle commande" cache-view="false">  
     <div class="choix-commande">
     	<button class="button button-full item" ui-sref="tab.plats" >Plats</button>
+<<<<<<< HEAD
     	<button class="button button-full item" ng-class="{'commande-boisson-selected': (classe().isSelected)}" ui-sref="tab.boissons">
     		Boissons
     		<div class="commande-boissons-detils" ng-if="(classe().isSelected)">
@@ -8,6 +9,15 @@
     			<div class="commande-nb-boissons"> {{user.nbBoisson}} </div>
     		</div>   
     	</button>
+=======
+        <button class="button button-full item" ng-class="{'commande-boisson-selected': (classe().boissonSelected)}" ui-sref="tab.boissons">
+            Boissons
+            <div class="commande-boissons-detils" ng-if="(classe().boissonSelected)">
+                <i class="ion-wineglass commande-icon-indication" ng-if="(classe().boissonSelected)"></i>
+                <div class="commande-nb-boissons"> {{user.nbBoisson}} </div>
+            </div>
+        </button>
+>>>>>>> origin/master
         <button class="button button-full item" ng-class="{'commande-boisson-selected': (classe().dessertSelected)}" ui-sref="tab.desserts">
             Desserts
             <div class="commande-boissons-detils" ng-if="(classe().dessertSelected)">
