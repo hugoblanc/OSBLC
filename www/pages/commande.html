@@ -1,27 +1,25 @@
 <ion-view view-title="Nouvelle commande" cache-view="false">  
     <div class="choix-commande">
-    	<button class="button button-full item" ui-sref="tab.plats" >Plats</button>
-<<<<<<< HEAD
-    	<button class="button button-full item" ng-class="{'commande-boisson-selected': (classe().isSelected)}" ui-sref="tab.boissons">
-    		Boissons
-    		<div class="commande-boissons-detils" ng-if="(classe().isSelected)">
-    			<i class="ion-wineglass commande-icon-indication" ng-if="(classe().isSelected)"></i>
-    			<div class="commande-nb-boissons"> {{user.nbBoisson}} </div>
-    		</div>   
-    	</button>
-=======
-        <button class="button button-full item" ng-class="{'commande-boisson-selected': (classe().boissonSelected)}" ui-sref="tab.boissons">
+        <img src="img/LetsCookWS.png" class="imageTitle">
+    	<button class="button button-full item" ng-class="{'commande-boisson-selected': (classe('plat').isSelected)}"
+        ui-sref="tab.plats" >Plats
+        <div class="commande-boissons-detils" ng-if="(classe('plat').isSelected)">
+                <i class="ion-pizza commande-icon-indication"></i>
+                <div class="commande-nb-boissons"> {{user.nbPlats}} </div>
+            </div>
+        </button>
+
+        <button class="button button-full item" ng-class="{'commande-boisson-selected': (classe('boisson').isSelected)}" ui-sref="tab.boissons">
             Boissons
-            <div class="commande-boissons-detils" ng-if="(classe().boissonSelected)">
-                <i class="ion-wineglass commande-icon-indication" ng-if="(classe().boissonSelected)"></i>
+            <div class="commande-boissons-detils" ng-if="(classe('boisson').isSelected)">
+                <i class="ion-wineglass commande-icon-indication"></i>
                 <div class="commande-nb-boissons"> {{user.nbBoisson}} </div>
             </div>
         </button>
->>>>>>> origin/master
-        <button class="button button-full item" ng-class="{'commande-boisson-selected': (classe().dessertSelected)}" ui-sref="tab.desserts">
+        <button class="button button-full item" ng-class="{'commande-boisson-selected': (classe('dessert').isSelected)}" ui-sref="tab.desserts">
             Desserts
-            <div class="commande-boissons-detils" ng-if="(classe().dessertSelected)">
-                <i class="ion-icecream commande-icon-indication" ng-if="(classe().dessertSelected)"></i>
+            <div class="commande-boissons-detils" ng-if="(classe('dessert').isSelected)">
+                <i class="ion-icecream commande-icon-indication" ng-if="(classe('dessert').isSelected)"></i>
                 <div class="commande-nb-boissons">{{user.nbDesserts}}</div>
             </div>
         </button>
