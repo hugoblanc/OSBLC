@@ -1,0 +1,27 @@
+<ion-view view-title="Recap Plats" class="plats-choix-type">
+  <ion-content scroll="true">
+    <ion-list show-delete="shouldShowDelete" ng-repeat="plat in plats">
+      <ion-item>
+          <ion-delete-button class="ion-minus-circled" 
+                             ng-click="deletePlat(plat)">
+          </ion-delete-button>
+        {{plat.name}}
+      </ion-item>
+    </ion-list>
+
+        <ion-toggle ng-model="shouldShowDelete" toggle-class="toggle-assertive">
+          <div class="new-plat-supprimer col text-center">
+            Supprimer un plat
+          </div>
+        </ion-toggle>
+
+        <button class="button button-full button-positive item" ng-click="addPlat()">
+          Ajouter un nouveau plat
+        </button>
+
+        <button class="button button-full button-balanced item" ng-click="submit()">
+          Valider
+        </button>
+
+  </ion-content>
+</ion-view>

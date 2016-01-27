@@ -116,13 +116,24 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
       }
     })
 
+    .state('tab.newplats', {
+        url: '/newplats',
+        views: {
+            'tab-menu': {
+                templateUrl: 'pages/newPlats.html',
+                controller: 'NewPlatsCtrl'
+            }
+        }
+    })
+
     .state('tab.plats', {
         url: '/plats',
         views: {
             'tab-menu': {
                 templateUrl: 'pages/plats.html',
                 controller: 'PlatsCtrl'
-            }
+            }, 
+            cache: false
         }
     })
 

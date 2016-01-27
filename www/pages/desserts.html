@@ -1,21 +1,21 @@
-<ion-view view-title="Desserts">
+<ion-view view-title="Desserts" cache-view="false">
     <div class="choix-boissons">
         <ion-list>
             <div class="liste-boissons">
                 <div class="item item-divider">
                     Choisissez un ou plusieurs desserts:
                 </div>
-                <ion-checkbox ng-model="dessert.isChecked" ng-checked="dessert.isChecked" ng-repeat="dessert in dessert.desserts">
+                <ion-checkbox  ng-model="dess2schow.isChecked" ng-checked="dess2schow.isChecked" ng-click="majPriceDesserts(dessert)"  ng-repeat="dess2schow in dessert.desserts">
                     <div class="details-boissons">
-                        {{dessert.name}}
-                        <span class="item-note item-details-note" ng-if="dessert.prix!=0.8">
-                            {{dessert.prix}}€
+                        {{dess2schow.name}}
+                       <span class="item-note item-details-note" ng-if="dess2schow.prix!=0.8">
+                            {{dess2schow.prix}}€
                         </span>
                     </div>
                 </ion-checkbox>
             </div>
             <button class="item button button-full button-balanced valide-boissons" ng-click="dessert.submit(dessert)">
-                Valider !
+                Valider !  {{dessert.currentPrice}} €
             </button>
         </ion-list>
     </div>

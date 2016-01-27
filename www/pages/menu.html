@@ -1,9 +1,20 @@
 
-<ion-view view-title="Votre choix">  
+<ion-view view-title="Votre choix" cache-view="false">  
+
     <div class="choix-commande">
     	<button class="button button-full button-balanced item" ng-click="nouvelleCommande()" >Nouvelle Commande</button>
     	<button class="button button-full button-balanced item" ui-sref="tab.favoris">Favoris</button>
     </div>
+    <div class="item item-divider">
+        Commande en cours : 
+    </div>
+    <ion-list ng-model="commandes" ng-repeat="commande in commandes">
+
+        <a class="item " href="#">
+            {{displayInformation(commande)}}
+        </a>
+        
+    </ion-list>
 </ion-view>
 <!-- <form name="myForm" ng-submit="foo()" novalidate>
     <label>

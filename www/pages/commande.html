@@ -1,9 +1,9 @@
 <ion-view view-title="Nouvelle commande" cache-view="false">  
     <div class="choix-commande">
         <img src="img/LetsCookWS.png" class="imageTitle">
-    	<button class="button button-full item" ng-class="{'commande-boisson-selected': (classe('plat').isSelected)}"
-        ui-sref="tab.plats" >Plats
-        <div class="commande-boissons-detils" ng-if="(classe('plat').isSelected)">
+    	<button class="button button-full item" ng-class="{'commande-boisson-selected': (classe('plat').isSelected)}" ng-click="changeViewPlats()">
+            Plats
+            <div class="commande-boissons-detils" ng-if="(classe('plat').isSelected)">
                 <i class="ion-pizza commande-icon-indication"></i>
                 <div class="commande-nb-boissons"> {{user.nbPlats}} </div>
             </div>
@@ -29,7 +29,7 @@
             Annuler 
         </button>
         <button class="button button-balanced commande-bouton-confirme" ng-click="commande.submit()">
-            Valider 
+            Valider {{commande.prix}} €
         </button>
     </div>
 </ion-view>
