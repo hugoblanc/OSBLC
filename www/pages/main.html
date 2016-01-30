@@ -1,0 +1,42 @@
+<ion-view view-title="Accueil"> <!--page1-->
+    <ion-content overflow-scroll="true">
+
+        <button class="button button-balanced" ng-click="$root.toc = ' animated rubberBand'" ng-class="$root.toc"   ng-if="admin">
+            Page Admin
+        </button>
+        <div class="item-divider"> Messages </div>
+
+        <ion-list>
+            <ul class="list">
+                <li class="item animated bounceInLeft" ng-repeat="message in accueil.messages" ng-click="toc = ''">
+                    <h3>{{message.titre}}</h3>
+                    <p>{{message.message}}</p>
+
+                    <span class="item-note">
+                        {{message.date|  date:'EEEE dd MMMM yyyy H:mm'}}
+                    </span>
+                </li>
+            </ul>
+        </ion-list>
+
+            <ion-infinite-scroll
+                icon="ion-loading-c"
+                on-infinite="getAll()">
+            </ion-infinite-scroll>
+
+
+        <div class="item-divider"> Évenements </div>
+
+        <ion-list>
+            <div ng-controller="EventsCtrl as eventsCtrl">
+                <div ng-repeat="event in eventsCtrl.events" class="item animated bounceInRight">
+                    <h3>{{event.name}}</h3>
+                    <p>{{event.description}}</p>
+                    {{event.date|  date:'EEEE dd MMMM yyyy H:mm'}}
+                </div> 
+            </div>
+            <!--<div ng-controller="CalendarCtrl as calendarCtrl" ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>--> 
+            {{test}}
+        </ion-list>
+    </ion-content>
+</ion-view>

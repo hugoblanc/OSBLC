@@ -95,3 +95,19 @@
 	text-align: center;
 	 col text-center
 }
+
+
+
+
+
+
+/***************************
+**********BOISSONS*************
+***************************/
+
+
+
+.liste-boissons{
+		position: relative;
+		top: -10px !important;
+}

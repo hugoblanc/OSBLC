@@ -1,26 +1,44 @@
 
 <!-- <title>Connexion</title> -->
-<<ion-view>
+<ion-view>
   <ion-pane>
-    <ion-content>
-      <div class="list">
-        <img src="img/login.png" class="imageTitle">
-        <form ng-submit="login(user)">
-          <label class="item item-input item-stacked-label firstCase">
-            <input type ="text" placeholder="Pseudo" ng-model="user.pseudo">
-            <span class ="infoList"  ng-show="lblPseudo"> Veuillez entrer un pseudo valide !</span> 
-          </label>
-          <label class="item item-input input-block item-stacked-label firstCase">
-            <input type ="password" placeholder="Password" ng-model="user.mdp">
-            <span class ="infoList"  ng-show="lblMdp"> Veuillez entrer un mot de passe valide !</span>
-          </label>
-          <label class="item item-button firstCase">
+    <ion-content class="animated bounceInRight">
+      <div class="list" >
+        <img src="img/inscription.jpg"  class="imageTitle">
+          <form ng-submit="login(user)" >
+            <label class="item item-input item-stacked-label firstCase">
+              <input type ="text" placeholder="Pseudo" ng-model="user.pseudo">
+              <span class ="infoList"  ng-show="lblPseudo"> Veuillez entrer un pseudo valide !</span> 
+            </label>
+            <label class="item item-input input-block item-stacked-label firstCase">
+              <input type ="password" placeholder="Password" ng-model="user.mdp">
+              <span class ="infoList"  ng-show="lblMdp"> Veuillez entrer un mot de passe valide !</span>
+            </label>
+            <ion-checkbox ng-model="isChecked">Connexion Automatique</ion-checkbox>
             <button class="button button-full button-balanced" type="submit">
-          Connexion
-        </button>
-          </label>
-        </form>
+              Connexion
+            </button>
+          </form>
       </div>
     </ion-content>
   </ion-pane>
 </ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

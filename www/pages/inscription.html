@@ -1,0 +1,51 @@
+<ion-view>
+  <ion-pane>
+    <ion-content>
+      <div class="list">
+         <img src="img/inscription.jpg" class="imageTitle">
+            <form ng-submit="signup(user)" ng-show="vue.isCreate">
+              <label class="item item-input item-stacked-label firstCase">
+                <input type ="text" placeholder="Prénom" ng-model="user.firstName">
+              </label>
+              <label class="item item-input input-block item-stacked-label firstCase">
+                <input type ="text" placeholder="Nom" ng-model="user.lastName">
+              </label>
+              <label class="item item-input item-stacked-label firstCase">
+                <input type ="text" placeholder="Email CPE" ng-model="user.email">
+              </label>
+              <label class="item item-input input-block item-stacked-label firstCase">
+                <input type ="password" placeholder="Password" ng-model="user.mdp">
+              </label>
+              <label class=" item-button firstCase">
+                <button class="button button-full button-balanced" type="submit">
+                  Creer un compte
+                </button>
+              </label>
+            </form>
+
+          <button class="button button-full button-positive" ui-sref='signin'>
+            S'identifier
+          </button>
+
+      </div>
+    </ion-content>
+  </ion-pane>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

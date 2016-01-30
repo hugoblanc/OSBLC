@@ -1,5 +1,6 @@
 <ion-view view-title="Plats" class="plats-choix-type" cache-view="false">
   <ion-content scroll="true">
+  <div class="animated animate bounceInRight">
       <div>
         <div class="item item-divider">
           Selectionner votre plat
@@ -45,5 +46,6 @@
       <button ng-click="plats.submit(choix.platsPrepares, 'platsPrep')" class="item button button-full button-balanced plats-submit" ng-if="!plats.isSandwich">
         Valider mon plat préparé
       </button>
+    </div>
   </ion-content>
 </ion-view>

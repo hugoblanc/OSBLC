@@ -1,11 +1,11 @@
  <ion-view view-title="Boissons" cache-view="false">   
     <div class="choix-boissons">
         <ion-list>
-        <div class="liste-boissons">
-          <div class="item item-divider">
+        <div class="liste-boissons   animated animate bounceInRight">
+          <div class="item item-divider" class="">
             Choisissez une ou plusieures boissons:
           </div>
-          <ion-checkbox ng-model="boiss2show.isChecked" ng-click="majPriceBoissons(boisson)" ng-checked="boiss2show.isChecked" ng-repeat="boiss2show in boisson.boissons" >
+          <ion-checkbox ng-model="boiss2show.isChecked" ng-click="majPriceBoissons(boisson)" ng-checked="boiss2show.isChecked" ng-repeat="boiss2show in boisson.boissons">
             <div class="details-boissons">
                 {{boiss2show.name}}
                 <span class="item-note item-details-note" ng-if="boiss2show.prix!=0.5">
@@ -13,11 +13,10 @@
                 </span>
             </div>
           </ion-checkbox>
-        </div>
         <button class="item button button-full button-balanced valide-boissons" ng-click="boisson.submit(boisson)">
             Valider !           {{boisson.currentPrice}} €
         </button>
-        </form>
+        </div>
         </ion-list>
     </div>
 </ion-view>

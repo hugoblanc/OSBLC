@@ -8,7 +8,7 @@
 var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 'ui.router'])
 
 
-.run(function($ionicPlatform, $rootScope) {
+.run(function($ionicPlatform, $rootScope, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -26,13 +26,15 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
   $rootScope.age = 5;
   $rootScope.user = {};
   $rootScope.user.id = '';
+  $rootScope.user.role = '';
+  $rootScope.user.filiere = '';
   $rootScope.user.email = '';
   $rootScope.user.firstName = '';
   $rootScope.user.lastname = '';
   $rootScope.user.commandes = [];
   $rootScope.user.currentCommande = -1;
   $rootScope.user.IDcurrentCommande = 0;
-
+  //infoConnexion
 
 })
 
@@ -51,6 +53,12 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
 
   // setup an abstract state for the tabs directive
   
+    .state('signup', {
+          url: '/sign-up',
+          templateUrl: 'pages/inscription.html',
+          controller: 'LoginCtrl'
+   })
+
     .state('signin', {
           url: '/sign-in',
           templateUrl: 'pages/login.html',
@@ -70,7 +78,7 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
     views: {
       'tab-accueil': {
         templateUrl: 'pages/main.html',
-        controller: 'MainCtrl'
+        controller: 'AccueilCtrl'
       }
     }
   })
@@ -156,18 +164,18 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.compte', {
+    url: '/compte',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-compte': {
+        templateUrl: 'pages/monCompte.html',
+        controller: 'parametresCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/sign-in');
+  $urlRouterProvider.otherwise('/sign-up');
 
   //$httpProvider.interceptors.push('APIInterceptor');
 });
