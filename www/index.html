@@ -45,6 +45,7 @@
     <script src="commun/controleurs/boissonCtrl.js"></script>
     <script src="commun/controleurs/dessertsCtrl.js"></script>
     <script src="commun/controleurs/commandeCtrl.js"></script>
+    <script src="commun/controleurs/favorisCtrl.js"></script>
     <script src="commun/controleurs/dessertsCtrl.js"></script>
     <script src="commun/controleurs/menuCtrl.js"></script>
     <script src="commun/controleurs/accueilCtrl.js"></script>
@@ -53,15 +54,35 @@
     <script src="commun/controleurs/newPlatsCtrl.js"></script>
     <script src="commun/controleurs/resetPasswordCtrl.js"></script>
     <script src="commun/controleurs/menuCtrl.js"></script>
+    <script src="commun/global/globalCtrl.js"></script>
   </head>
-  <body ng-app="starter">
+  <body ng-app="starter" ng-controller="GlobalCtrl">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
-    <ion-nav-bar class="bar-stable">
+    <ion-nav-bar class="bar-stable" ng-if="$state.includes('signup')" ng-hide="$state.includes('signup')">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>
+
+
+    <!-- Message informatif présent sur chaque page -->
+
+    <div ng-if="message.display">
+      <div ng-class="message.class" class="bar bar-header bar-assertive">
+        <h3 class="title">{{message.text}}</h3>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
     <!--
       The views will be rendered in the <ion-nav-view> directive below
       Templates are in the /templates folder (but you could also

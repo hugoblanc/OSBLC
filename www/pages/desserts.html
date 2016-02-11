@@ -1,24 +1,61 @@
 <ion-view view-title="Desserts" cache-view="false">
-    <div class="choix-boissons">
-        <ion-list>
-            <div class="liste-boissons animated animate bounceInRight">
-                <div class="item item-divider">
-                    Choisissez un ou plusieurs desserts:
-                </div>
-            <div>
-                <ion-checkbox  ng-model="dess2schow.isChecked" ng-checked="dess2schow.isChecked" ng-click="majPriceDesserts(dessert)"  ng-repeat="dess2schow in dessert.desserts" >
-                    <div class="details-boissons">
-                        {{dess2schow.name}}
-                       <span class="item-note item-details-note" ng-if="dess2schow.prix!=0.8">
-                            {{dess2schow.prix}}€
-                        </span>
-                    </div>
-                </ion-checkbox>
-            </div>
-            <button class="item button button-full button-balanced valide-boissons" ng-click="dessert.submit(dessert)">
-                Valider !  {{dessert.currentPrice}} €
-            </button>
-        </div>
-        </ion-list>
-    </div>
+  <ion-content>
+    <ion-list>
+      <div class="item item-divider">
+        Choisissez un ou plusieurs desserts:
+      </div>
+      <div ng-repeat="dess2schow in dessert.desserts">
+
+        <ion-checkbox ng-model="dess2schow.isChecked" ng-checked="dess2schow.isChecked"
+                      ng-click="checkDessert(dess2schow, dessert)" ng-show="!dess2schow.isChecked">
+          <div class="details-boissons">
+            {{dess2schow.name}}
+                    <span class="item-note item-details-note" ng-if="dess2schow.prix != 0.8">
+                    {{dess2schow.prix}}€
+                    </span>
+          </div>
+        </ion-checkbox>
+
+        <ion-item ng-if="dess2schow.isChecked">
+          {{dess2schow.name}}
+                  <span class="item-note item-details-note" ng-if="dess2schow.prix != 0.8">
+                  {{dess2schow.prix}}€
+                  </span>
+                  <span class="item-note">
+                    <button class="button button-light icon ion-minus-circled"
+                            ng-click="changeNb(dess2schow,-1)"></button>
+                      {{dess2schow.nb}}
+                    <button class="button button-light icon ion-plus-circled"
+                            ng-click="changeNb(dess2schow,1)"></button>
+                  </span>
+        </ion-item>
+
+      </div>
+    </ion-list>
+    <button class="item button button-full button-balanced valide-boissons" ng-click="dessert.submit(dessert)">
+      Valider ! {{dessert.currentPrice}} €
+    </button>
+  </ion-content>
 </ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

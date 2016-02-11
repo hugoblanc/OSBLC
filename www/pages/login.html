@@ -6,19 +6,26 @@
       <div class="list" >
         <img src="img/inscription.jpg"  class="imageTitle">
           <form ng-submit="login(user)" >
-            <label class="item item-input item-stacked-label firstCase">
-              <input type ="text" placeholder="Pseudo" ng-model="user.pseudo">
-              <span class ="infoList"  ng-show="lblPseudo"> Veuillez entrer un pseudo valide !</span> 
+            <label class="item item-input item-stacked-label firstCase" >
+              <input type ="text" placeholder="Pseudo" ng-model="user.pseudo" >
+              <span class ="infoList"  ng-show="lblPseudo" ng-if="user.pseudo.length < 6"> Veuillez entrer un pseudo valide ! 6 caractères </span> 
             </label>
             <label class="item item-input input-block item-stacked-label firstCase">
-              <input type ="password" placeholder="Password" ng-model="user.mdp">
-              <span class ="infoList"  ng-show="lblMdp"> Veuillez entrer un mot de passe valide !</span>
+              <input type ="password" placeholder="Password" ng-model="user.mdp" >
+              <span class ="infoList"  ng-show="lblMdp" ng-if="user.mdp.length < 7"> Veuillez entrer un mot de passe valide !8 caractères </span>
             </label>
             <ion-checkbox ng-model="isChecked">Connexion Automatique</ion-checkbox>
             <button class="button button-full button-balanced" type="submit">
-              Connexion
+            <div ng-if="!isLoading">
+                  Connexion
+            </div>
+            <ion-spinner class="spinner-energized" ng-if="isLoading"></ion-spinner>
             </button>
           </form>
+          <div class="bar bar-assertive" ng-show="error.length > 0">
+            <h1 class="title">{{error}}</h1>
+          </div>
+          
       </div>
     </ion-content>
   </ion-pane>

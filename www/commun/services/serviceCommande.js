@@ -37,7 +37,8 @@ app.service('CommandeService', function ($http, Backand) {
             method: 'GET',
             url: getUrl(),
             params: {
-                sort: [{"fieldName": "date", "order": "asc"}]
+                sort: [{"fieldName": "date", "order": "asc"}],
+                pageSize : 1000
             }
         });
     };
@@ -64,17 +65,55 @@ app.service('CommandeService', function ($http, Backand) {
             }
         });
     };
-    
-//    service.createCommande = function(commande){
-//        return $http({
-//            method: 'POST',
-//            url: getUrl(),
-//            data : commande,
-//            params: {
-//                deep: true
-//            }
-//        });
-//    };
-    
 
+    service.createCommande = function(commande){
+        return $http({
+            method: 'POST',
+            url: getUrl(),
+            data : commande,
+            params: {
+                deep: true
+            }
+        });
+    };
+
+
+    //récupérer toute les commandes d'un user
+    service.getUserCommandes = function(userId){
+        return $http({
+            method: 'GET',
+            url: getUrl(),
+            params: {
+                filter : [{fieldName:"user", operator:"in", value:userId}]
+            }
+        });
+
+    };
+
+
+
+
+});
+
+
+
+
+
+
+app.service('CommandeParamService', function ($http, Backand) {
+    var service = this,
+            baseUrl = '/1/objects/',
+            objectName = 'Parametre/';
+
+    function getUrl() {
+        return Backand.getApiUrl() + baseUrl + objectName;
+    }
+
+    function getUrlForId(id) {
+        return getUrl() + id;
+    }
+
+    service.all = function () {
+        return $http.get(getUrl());
+    };
 });

@@ -1,22 +1,37 @@
- <ion-view view-title="Boissons" cache-view="false">   
-    <div class="choix-boissons">
-        <ion-list>
-        <div class="liste-boissons   animated animate bounceInRight">
-          <div class="item item-divider" class="">
-            Choisissez une ou plusieures boissons:
+<ion-view view-title="Boissons" cache-view="false">
+  <ion-content>
+    <ion-list>
+      <div class="item item-divider">
+        Choisissez une ou plusieures boissons:
+      </div>
+      <div class="liste-boissons" ng-repeat="boiss2show in boisson.boissons">
+        <ion-checkbox ng-model="boiss2show.isChecked" ng-checked="boiss2show.isChecked"
+                      ng-click="checkBoisson(boiss2show, boisson)" ng-show="!boiss2show.isChecked">
+          <div class="details-boissons">
+            {{boiss2show.name}}
+                  <span class="item-note item-details-note" ng-if="boiss2show.prix != 0.5">
+                      {{boiss2show.prix}}€
+                  </span>
           </div>
-          <ion-checkbox ng-model="boiss2show.isChecked" ng-click="majPriceBoissons(boisson)" ng-checked="boiss2show.isChecked" ng-repeat="boiss2show in boisson.boissons">
-            <div class="details-boissons">
-                {{boiss2show.name}}
-                <span class="item-note item-details-note" ng-if="boiss2show.prix!=0.5">
+        </ion-checkbox>
+
+        <ion-item ng-if="boiss2show.isChecked">
+          {{boiss2show.name}}
+                  <span class="item-note item-details-note" ng-if="boiss2show.prix != 0.5">
                   {{boiss2show.prix}}€
-                </span>
-            </div>
-          </ion-checkbox>
-        <button class="item button button-full button-balanced valide-boissons" ng-click="boisson.submit(boisson)">
-            Valider !           {{boisson.currentPrice}} €
-        </button>
-        </div>
-        </ion-list>
-    </div>
+                  </span>
+                  <span class="item-note">
+                    <button class="button button-light icon ion-minus-circled"
+                            ng-click="changeNb(boiss2show,-1)"></button>
+                      {{boiss2show.nb}}
+                    <button class="button button-light icon ion-plus-circled"
+                            ng-click="changeNb(boiss2show,1)"></button>
+                  </span>
+        </ion-item>
+      </div>
+    </ion-list>
+    <button class="item button button-full button-balanced valide-boissons" ng-click="boisson.submit(boisson)">
+      Valider ! {{boisson.currentPrice}} €
+    </button>
+  </ion-content>
 </ion-view>

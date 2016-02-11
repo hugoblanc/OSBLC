@@ -23,7 +23,7 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
     }
   });
 
-  $rootScope.age = 5;
+  $rootScope.$state = $state;
   $rootScope.user = {};
   $rootScope.user.id = '';
   $rootScope.user.role = '';
@@ -41,9 +41,9 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
 .config(function(BackandProvider, $stateProvider, $urlRouterProvider) {
 
 
-  BackandProvider.setAppName("MABASE"); // change here to your app name
-  BackandProvider.setSignUpToken('4ce88904-75c5-412c-8365-df97d9e18a8f'); //token that enable sign up. see http://docs.backand.com/en/latest/apidocs/security/index.html#sign-up
-  BackandProvider.setAnonymousToken('87c37623-a2d2-42af-93df-addc65c6e9ad'); // token is for anonymous login. see http://docs.backand.com/en/latest/apidocs/security/index.html#anonymous-access
+      BackandProvider.setAppName('mabase');
+      BackandProvider.setSignUpToken('f1c7c793-2d52-4312-b99b-e0e5b7d83c8c');
+      BackandProvider.setAnonymousToken('94414917-aa8f-4c45-937b-ac80a010a7ab');
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -57,19 +57,26 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
           url: '/sign-up',
           templateUrl: 'pages/inscription.html',
           controller: 'LoginCtrl'
-   })
+    })
 
     .state('signin', {
           url: '/sign-in',
           templateUrl: 'pages/login.html',
           controller: 'LoginCtrl'
-   })
+    })
+
+
+    .state('verifEmail', {
+      url: '/verifEmail',
+      templateUrl: 'pages/verifEmail.html'
+    })
+
 
     .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'pages/tabs.html'
-  })
+    })
 
   // Each tab has its own nav history stack:
 
@@ -148,9 +155,9 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
     .state('tab.favoris', {
       url: '/favoris',
       views: {
-        'tab-friends': {
+        'tab-menu': {
           templateUrl: 'pages/favoris.html',
-          controller: 'MenuCtrl'
+          controller: 'FavorisCtrl'
         }
       }
     })

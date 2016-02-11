@@ -21,54 +21,52 @@
           <ion-radio id="5" ng-value="5" ng-model="user.annee" name="annee">5</ion-radio>
 
         <button class="button button-block button-balanced" type="submit">
-          Sauvegarder
+          <div ng-if="!changeParamsIsLoading">
+                Sauvegarder
+          </div>
+          <ion-spinner class="spinner-energized" ng-if="changeParamsIsLoading"></ion-spinner>
         </button>
+
 
       </form>
     </ion-list>
-
-    <h3>Commande</h3>
-    Recevoir un mail lorsque la commande est prête:
-    <ion-toggle ng-model="user.sendMail" toggle-class="toggle-balanced"> Envoi de mail </ion-toggle>
-
-     <div class="row">
-        <div class="col col-100">
-            <button class="button button-balanced" ng-click="setChangeMDP()" ng-hide="changeMDP">
-                Changer de mot de passe
-            </button>
-            <form class="form" name="myForm" ng-submit="update()" novalidate ng-model-options="{debounce: 200}" ng-show="changeMDP">
-                <fieldset>
-                    <h3>Changer de mot de passe</h3>
-                    <label class="item item-input">
-                        <span class="input-label">Ancien mot de passe</span>
-                        <input type="password"
-                               name="oldPassword"
-                               id="old-password"
-                               ng-model="oldPassword">
-                    </label>
-                    <label class="item item-input">
-                        <span class="input-label">Nouveau mot de passe</span>
-                        <input type="password"
-                               class="form-control"
-                               name="newPassword"
-                               id="new-password"
-                               ng-model="newPassword"
-                               ng-minlength="6"
-                               ng-maxlength="20">
-                    </label>
-                    <label class="item item-input">
-                        <span class="input-label">Confirmer le mot de passe</span>
-                        <input type="password"
-                               class="form-control"
-                               name="confirmPassword"
-                               id="confirm-password"
-                               ng-model="confirmPassword">
-                    </label>
-                    <button type="submit" class="button button-balanced">
-                        Enregistrer le mot de passe
-                    </button>
-                </fieldset>
-            </form>
+        <button class="button button-block button-balanced" ng-click="setChangeMDP()" ng-if="!changeMDP">
+            Changer de mot de passe
+        </button>
+          <form class="form" name="myForm" ng-submit="changePassword()" novalidate ng-model-options="{debounce: 200}" ng-if="changeMDP">
+                  <h3>Changer de mot de passe</h3>
+                  <label class="item item-input">
+                      <span class="input-label">Ancien mot de passe</span>
+                      <input type="password"
+                             name="oldPassword"
+                             id="old-password"
+                             ng-model="passwords.oldPassword">
+                  </label>
+                  <label class="item item-input">
+                      <span class="input-label">Nouveau mot de passe</span>
+                      <input type="password"
+                             class="form-control"
+                             name="newPassword"
+                             id="new-password"
+                             ng-model="passwords.newPassword"
+                             ng-minlength="6"
+                             ng-maxlength="20">
+                  </label>
+                  <label class="item item-input">
+                      <span class="input-label">Confirmer le mot de passe</span>
+                      <input type="password"
+                             class="form-control"
+                             name="confirmPassword"
+                             id="confirm-password"
+                             ng-model="passwords.confirmPassword">
+                  </label>
+                  <button type="submit" class="button button-block button-balanced">
+                    <div ng-if="!changePswIsLoading">
+                          Enregistrer le mot de passe
+                    </div>
+                    <ion-spinner class="spinner-energized" ng-if="changePswIsLoading"></ion-spinner>
+                  </button>
+          </form>
         </div>
     </div>
 
