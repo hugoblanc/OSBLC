@@ -171,6 +171,36 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
       }
     })
 
+  .state('tab.planning', {
+    url: '/planning',
+    views: {
+      'tab-planning': {
+        templateUrl: 'pages/planning.html',
+        controller: 'planningCtrl'
+      }
+    }
+  })
+
+  .state('tab.edt', {
+    url: '/edt/:filiere/:annee',
+    views: {
+      'tab-planning': {
+        templateUrl: 'pages/edt.html',
+        controller: 'edtCtrl'
+      }
+    }
+  })
+
+  .state('tab.selectEdt', {
+    url: '/selectEdt',
+    views: {
+      'tab-planning': {
+        templateUrl: 'pages/selectEdt.html',
+        controller: 'selectEdtCtrl'
+      }
+    }
+  })
+
   .state('tab.compte', {
     url: '/compte',
     views: {

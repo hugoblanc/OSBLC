@@ -5,7 +5,7 @@
     </div>
 
     <div>
-    <ion-radio ng-model="commande" ng-value="icommande" ng-repeat="icommande in listeCommandes" >
+    <ion-radio name="favoris" ng-change="updateCommande()" ng-model="commande.id" ng-value="{{$index}}" ng-repeat="icommande in listeCommandes" >
 
         {{icommande.plats[0].type}}
         {{icommande.boissons[0].name}}

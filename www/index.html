@@ -34,6 +34,8 @@
     <script src="commun/services/servicePlats.js"></script>
     <script src="commun/services/serviceDesserts.js"></script>
     <script src="commun/services/serviceAccueil.js"></script>
+    <script src="commun/services/servicePlanning.js"></script>
+    <script src="commun/services/serviceEdt.js"></script>
 
     <!-- Code Global -->
 
@@ -54,13 +56,20 @@
     <script src="commun/controleurs/newPlatsCtrl.js"></script>
     <script src="commun/controleurs/resetPasswordCtrl.js"></script>
     <script src="commun/controleurs/menuCtrl.js"></script>
+    <script src="commun/controleurs/planningCtrl.js"></script>
+    <script src="commun/controleurs/edtCtrl.js"></script>
+    <script src="commun/controleurs/selectEdtCtrl.js"></script>
     <script src="commun/global/globalCtrl.js"></script>
   </head>
   <body ng-app="starter" ng-controller="GlobalCtrl">
     <!--
       The nav bar that will be updated as we navigate between views.
+
+ng-if="$state.includes('signup')" ng-hide="$state.includes('signup')
+
+      
     -->
-    <ion-nav-bar class="bar-stable" ng-if="$state.includes('signup')" ng-hide="$state.includes('signup')">
+    <ion-nav-bar class="bar-stable" ">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>

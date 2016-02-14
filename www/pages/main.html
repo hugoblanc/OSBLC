@@ -27,15 +27,14 @@
         <div class="item-divider"> Évenements </div>
 
         <ion-list>
-            <div ng-controller="EventsCtrl as eventsCtrl">
-                <div ng-repeat="event in eventsCtrl.events" class="item animated bounceInRight">
+            <div ng-controller="EventsCtrl">
+                <div ng-repeat="event in events" class="item animated bounceInRight">
                     <h3>{{event.name}}</h3>
                     <p>{{event.description}}</p>
                     {{event.date|  date:'EEEE dd MMMM yyyy H:mm'}}
                 </div> 
             </div>
             <!--<div ng-controller="CalendarCtrl as calendarCtrl" ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>--> 
-            {{test}}
         </ion-list>
     </ion-content>
 </ion-view>

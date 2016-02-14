@@ -1,0 +1,19 @@
+
+<ion-view view-title="Choix planning" cache-view="false">  
+	<ion-content>
+      <ion-list>
+        <div ng-repeat="group in groups">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+			{{group.name}}
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)" ng-click="changeView({'filiere': group.name, 'annee': item})">
+            Année : {{item}}
+          </ion-item>
+        </div>
+      </ion-list>
+    </ion-content>
+</ion-view>

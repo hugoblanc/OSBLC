@@ -125,3 +125,42 @@
 .errorInscription{
 	color: red;
 }
+
+
+
+/***************************
+**********planning*************
+***************************/
+
+.image-planning{
+	width: 200%;
+	height: 200%;
+}
+
+
+
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+.item-stable, .item-accordion{
+	text-align: center;
+}
+
+.icon-retour-planning{
+	position: absolute;
+	top: 0px;
+	left: 5px;
+	z-index: 1;
+	font-size: 200%
+}
