@@ -67,9 +67,9 @@
 
 ng-if="$state.includes('signup')" ng-hide="$state.includes('signup')
 
-      
+
     -->
-    <ion-nav-bar class="bar-stable" ">
+    <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>
@@ -78,7 +78,7 @@ ng-if="$state.includes('signup')" ng-hide="$state.includes('signup')
     <!-- Message informatif présent sur chaque page -->
 
     <div ng-if="message.display">
-      <div ng-class="message.class" class="bar bar-header bar-assertive">
+      <div ng-class="message.class" class="bar bar-header bar-assertive message-perso">
         <h3 class="title">{{message.text}}</h3>
       </div>
     </div>

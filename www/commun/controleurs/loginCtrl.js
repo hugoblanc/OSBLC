@@ -1,6 +1,6 @@
 app.controller('LoginCtrl', function (Backand, $scope, $state, ServiceLogin, $rootScope, GlobalItems) {
   $scope.user = {};
-  $scope.user.filiere = "CGP";
+  $scope.user.filiere = "IRC";
   $scope.user.annee = "3";
   $scope.vue = {};
   $scope.vue.isCreate = true;

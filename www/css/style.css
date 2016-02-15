@@ -164,3 +164,7 @@
 	z-index: 1;
 	font-size: 200%
 }
+
+.message-perso{
+	z-index: 500;
+}

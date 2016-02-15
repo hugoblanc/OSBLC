@@ -9,7 +9,7 @@
             <ul class="list">
                 <li class="item animated bounceInLeft" ng-repeat="message in accueil.messages" ng-click="toc = ''">
                     <h3>{{message.titre}}</h3>
-                    <p>{{message.message}}</p>
+                    <div  class="item-text-wrap"><p>{{message.message}}</p></div>
 
                     <span class="item-note">
                         {{message.date|  date:'EEEE dd MMMM yyyy H:mm'}}

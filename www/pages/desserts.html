@@ -10,7 +10,7 @@
                       ng-click="checkDessert(dess2schow, dessert)" ng-show="!dess2schow.isChecked">
           <div class="details-boissons">
             {{dess2schow.name}}
-                    <span class="item-note item-details-note" ng-if="dess2schow.prix != 0.8">
+                    <span class="item-note item-details-note">
                     {{dess2schow.prix}}€
                     </span>
           </div>
@@ -18,7 +18,7 @@
 
         <ion-item ng-if="dess2schow.isChecked">
           {{dess2schow.name}}
-                  <span class="item-note item-details-note" ng-if="dess2schow.prix != 0.8">
+                  <span class="item-note item-details-note">
                   {{dess2schow.prix}}€
                   </span>
                   <span class="item-note">
