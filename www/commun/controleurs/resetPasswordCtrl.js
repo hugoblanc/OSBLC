@@ -42,7 +42,7 @@ app.controller('resetPasswordCtrl', ['ServiceLogin', '$location', '$state', Rese
             }
             else {
                 if (self.newPassword !== self.confirmPassword) {
-                    self.error = 'Les mots de passes sont différents';
+                    self.error = 'Les mots de passes sont diffÃ©rents';
                 }
                 else
                     ServiceLogin.resetPassword(self.newPassword, self.token)

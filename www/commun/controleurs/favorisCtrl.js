@@ -22,7 +22,7 @@ app.controller('FavorisCtrl', function ($scope,
     $scope.listeCommandes = JSON.parse(window.localStorage.getItem("favoris")) || [];
 
 
-    function autorisationCommander(){ // utilis� pour savoir si l'utilisateur peu commander ou non ? et le message a afficher
+    function autorisationCommander(){ // utilisé pour savoir si l'utilisateur peu commander ou non ? et le message a afficher
         CommandeParamService.all().then(function(resultParamOnline){
             $scope.autorise.autoriseToCommande = resultParamOnline.data.data[0].accesCommander;
             $scope.autorise.message = resultParamOnline.data.data[0].message;
@@ -77,33 +77,33 @@ app.controller('FavorisCtrl', function ($scope,
     
 
     function envoiCommande(currentCommande) {
-        /*Méthode qui envoi les commande à la partie service
+        /*MÃ©thode qui envoi les commande Ã  la partie service
          fonctionne avec une fonction controleCOmmande qui fabrique un tableau de boolean
-         en fonction de la présence ou non d'éléments dans les tableaux: 
+         en fonction de la prÃ©sence ou non d'Ã©lÃ©ments dans les tableaux: 
          -boissons
          -plats
          -dessert
          */
 
-        CommandeService.createCommande(currentCommande).then(function (resultCommande) {/*Si l'envoi dans la base c'est bien passé 
+        CommandeService.createCommande(currentCommande).then(function (resultCommande) {/*Si l'envoi dans la base c'est bien passÃ© 
          alors on envoi le reste (boissons, desserts, plats)*/
             $rootScope.user.commande.id = resultCommande.data.__metadata.id;
-            $rootScope.user.commande = {"plats": [], "boissons": [], "desserts": [], "statut": "Non validé", "date": (new Date())};
+            $rootScope.user.commande = {"plats": [], "boissons": [], "desserts": [], "statut": "Non validÃ©", "date": (new Date())};
         });
     }
 
 
 
     function submit() {
-        /*Méthode fixé au bouton valider elle envoi la commande stocké dans la rootScope*/
+        /*MÃ©thode fixÃ© au bouton valider elle envoi la commande stockÃ© dans la rootScope*/
 
         $rootScope.user.commande.prix = $scope.commande.prix;
         $rootScope.user.commande.user = $rootScope.user.id;
-            if($scope.autorise.autoriseToCommande){ //Validation uniquement si user autoris�
+            if($scope.autorise.autoriseToCommande){ //Validation uniquement si user autorisé
                 var createByAdmin = $rootScope.user.commande;
                 envoiCommande($scope.listeCommandes[$scope.commande.id]);
                 
-                //si la commande a �t� cr�er par un admin dans l'onglet admin
+                //si la commande a été créer par un admin dans l'onglet admin
                 if(createByAdmin.admin){
                     //envoyer la commande en local
                     $rootScope.newCommande = createByAdmin;
@@ -122,15 +122,15 @@ app.controller('FavorisCtrl', function ($scope,
 
     function annuler() {
         if (confirm('Voulez-vous vraiment annuler la commande?')) {
-            $rootScope.user.commande = {"plats": [], "boissons": [], "desserts": [], "statut": "Non validé", "date": (new Date())};
+            $rootScope.user.commande = {"plats": [], "boissons": [], "desserts": [], "statut": "Non validÃ©", "date": (new Date())};
             $state.go('tab.menu');
         }
     }
 
     $scope.commande.submit = submit; // lors du clique sur le boutton valider
     $scope.commande.annuler = annuler;
-    //$scope.classe = classes; // fonction qui nous donne des infos sur la présence ou non de boissons, desserts et plats pour mettre a jour les infos visible sur la page commande
-    $scope.updateCommande = updateCommande; // On actualise le prix de la commande en fonction des tableaux stockés dans le rootscope
+    //$scope.classe = classes; // fonction qui nous donne des infos sur la prÃ©sence ou non de boissons, desserts et plats pour mettre a jour les infos visible sur la page commande
+    $scope.updateCommande = updateCommande; // On actualise le prix de la commande en fonction des tableaux stockÃ©s dans le rootscope
 
 
 	

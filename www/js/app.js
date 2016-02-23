@@ -8,7 +8,7 @@
 var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 'ui.router'])
 
 
-.run(function($ionicPlatform, $rootScope, $state) {
+.run(function($ionicPlatform, $rootScope, $state, $ionicPopup) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -22,6 +22,12 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
       StatusBar.styleDefault();
     }
   });
+
+  // Revient à la page signup lorsque l'utilisateur rafraichit la page
+  window.onbeforeunload = function() {
+    return "Vous allez être déconnecté";
+    $state.go("signup");
+  }
 
   $rootScope.$state = $state;
   $rootScope.user = {};
