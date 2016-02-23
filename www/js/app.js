@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 'ui.router'])
+var app = angular.module('starter', ['ionic', 'backand', 'ui.router'])
 
 
 .run(function($ionicPlatform, $rootScope, $state, $ionicPopup) {
@@ -164,15 +164,6 @@ var app = angular.module('starter', ['ionic', 'backand', 'starter.controllers', 
         'tab-menu': {
           templateUrl: 'pages/favoris.html',
           controller: 'FavorisCtrl'
-        }
-      }
-    })
-
-    .state('tab.friend-detail', {
-      url: '/friends/:friendId',
-      views: {
-        'tab-friends': {
-          templateUrl: 'templates/friend-detail.html',
         }
       }
     })
