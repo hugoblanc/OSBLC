@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', function (Backand, $scope, $state, ServiceLogin, $rootScope, GlobalItems) {
+app.controller('LoginCtrl', function (Backand, $scope, $state, ServiceLogin, $rootScope) {
   $scope.user = {};
   $scope.user.filiere = "IRC";
   $scope.user.annee = "3";

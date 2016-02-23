@@ -1,5 +1,3 @@
-//(function () {
-//    app.controller('parametresCtrl', ['Connexion', '$location', $rootScope, parametresCtrl]);
 app.controller('parametresCtrl', function (ServiceLogin, $scope, $state, $rootScope) {
 //    function parametresCtrl(Connexion, $location) {
     $scope.control = {};

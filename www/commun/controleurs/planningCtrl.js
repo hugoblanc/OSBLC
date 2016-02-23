@@ -1,4 +1,4 @@
-app.controller('planningCtrl', function ($scope, $state, $rootScope, CommandeService, GlobalItems) {
+app.controller('planningCtrl', function ($scope, $state, $rootScope) {
 
 
 

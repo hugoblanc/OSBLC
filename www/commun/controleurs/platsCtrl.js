@@ -3,8 +3,7 @@ app.controller('PlatsCtrl', function ($scope,
                                       $rootScope,
                                       $q,
                                       PlatPrepService,
-                                      SaucesService,
-                                      GlobalItems) {
+                                      SaucesService) {
 
   $scope.choix = {"sauces": [], "platsPrepares": []}; // Tout les choix possible sont préchargé ici
 

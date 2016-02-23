@@ -1,4 +1,4 @@
-app.controller('NewPlatsCtrl', function ($scope, $state, $rootScope, $q, PlatPrepService, SaucesService) {
+app.controller('NewPlatsCtrl', function ($scope, $state, $rootScope) {
 
 
   $scope.plats = $rootScope.user.commande.plats;

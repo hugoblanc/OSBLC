@@ -1,4 +1,4 @@
-app.controller('edtCtrl', function ($scope, $state, $rootScope, $stateParams, GlobalItems) {
+app.controller('edtCtrl', function ($scope, $state, $rootScope, $stateParams) {
     $scope.img = ""+$stateParams.annee+$stateParams.filiere+".jpg";
 
     function changeView(){

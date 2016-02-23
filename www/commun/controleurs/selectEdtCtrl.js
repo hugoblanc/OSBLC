@@ -1,4 +1,4 @@
-app.controller('selectEdtCtrl', function ($scope, $state, $rootScope, CommandeService, GlobalItems) {
+app.controller('selectEdtCtrl', function ($scope, $state, $rootScope) {
     $scope.commandes = [];
     $scope.groups = [];
     for (var i=0; i<3; i++) {

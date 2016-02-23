@@ -1,4 +1,4 @@
-app.controller('GlobalCtrl', function ($scope, $timeout, $sce) {
+app.controller('GlobalCtrl', function ($scope, $timeout) {
     
     $scope.message = {};
     $scope.message.display = false;
